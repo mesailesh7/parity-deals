@@ -1,4 +1,5 @@
 import BrandLogo from "@/components/BrandLogo";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
 
@@ -18,7 +19,14 @@ const Navbar = () => {
         <Link className="text-1g" href="#">
           About
         </Link>
-        <span className="text-lg"></span>
+        <span className="text-lg">
+          <SignedIn>
+            <Link href="/dashboard">Dashboard</Link>
+          </SignedIn>
+          <SignedOut>
+            <SignInButton>Login</SignInButton>
+          </SignedOut>
+        </span>
       </nav>
     </header>
   );
